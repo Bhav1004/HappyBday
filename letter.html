@@ -651,5 +651,45 @@
             }
         });
     </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const audioElements = [
+            new Audio("https://raw.githubusercontent.com/Bhav1004/HappyBday/main/Badal%20Pe%20Paon%20Hain.mp3"), // Replace with actual song URLs
+            new Audio("song2.mp3"),
+            new Audio("song3.mp3"),
+            new Audio("song4.mp3"),
+            new Audio("song5.mp3")
+        ];
+        
+        const playButtons = document.querySelectorAll(".playlist-item-play");
+
+        let currentPlayingIndex = null;
+
+        playButtons.forEach((button, index) => {
+            button.addEventListener("click", function () {
+                if (currentPlayingIndex !== null && currentPlayingIndex !== index) {
+                    audioElements[currentPlayingIndex].pause();
+                    playButtons[currentPlayingIndex].innerHTML = '<i class="fas fa-play"></i>';
+                }
+
+                if (audioElements[index].paused) {
+                    audioElements[index].play();
+                    button.innerHTML = '<i class="fas fa-pause"></i>';
+                    currentPlayingIndex = index;
+                } else {
+                    audioElements[index].pause();
+                    button.innerHTML = '<i class="fas fa-play"></i>';
+                    currentPlayingIndex = null;
+                }
+            });
+
+            audioElements[index].addEventListener("ended", function () {
+                button.innerHTML = '<i class="fas fa-play"></i>';
+                currentPlayingIndex = null;
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
