@@ -487,14 +487,7 @@
 </head>
 <body>
     <div class="scrapbook-bg"></div>
-    <div class="confetti" id="confetti-container"></div>
-
-<audio id="global-audio" loop>
-    <source src="https://raw.githubusercontent.com/Bhav1004/HappyBday/main/She%20Dont%20Give.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-
-    
+    <div class="confetti" id="confetti-container"></div>>
     <!-- Balloons -->
     <div class="balloon" style="left: 10%; animation-duration: 18s;"></div>
     <div class="balloon" style="left: 20%; animation-duration: 15s; animation-delay: 2s;"></div>
@@ -828,41 +821,6 @@
                 galleryContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 2000);
         });
-    </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const audio = document.getElementById("global-audio");
-
-        // Restore previous play state and position
-        if (localStorage.getItem("audioTime")) {
-            audio.currentTime = localStorage.getItem("audioTime");
-        }
-        if (localStorage.getItem("audioPlaying") === "true") {
-            audio.play();
-        }
-
-        // Save play state before navigating away
-        window.addEventListener("beforeunload", function () {
-            localStorage.setItem("audioTime", audio.currentTime);
-            localStorage.setItem("audioPlaying", !audio.paused);
-        });
-
-        // Play/Pause Toggle Button (Optional)
-        document.body.insertAdjacentHTML("beforeend", `
-            <button id="toggle-audio" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">🎵 Toggle Music</button>
-        `);
-        document.getElementById("toggle-audio").addEventListener("click", function () {
-            if (audio.paused) {
-                audio.play();
-                localStorage.setItem("audioPlaying", "true");
-            } else {
-                audio.pause();
-                localStorage.setItem("audioPlaying", "false");
-            }
-        });
-    });
-</script>
-
-    
+    </script>    
 </body>
 </html>
